@@ -13,16 +13,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?sentence ?minvalue
 WHERE {
-?_decision_uri a framework:Decision.
-	?s1 msobd:hasDecision ?_decision_uri;  msobd:hasSentenceStatement ?sentence.
+?_decision_iri a framework:Decision.
+	?s1 msobd:hasDecision ?_decision_iri;  msobd:hasSentenceStatement ?sentence.
 	?bigdatacomponent framework:hasOutputSentence ?s1.	
 ?s2 a urw3:Sentence; owl:sameAs ?s1; urw3:hasUncertainty ?u.
 	?u msobd:hasUncertaintyValue ?minvalue.
 {
 SELECT   (MIN(?value) AS ?minvalue) 
 WHERE {
-	?_decision_uri a framework:Decision.
-	?s1 msobd:hasDecision ?_decision_uri.
+	?_decision_iri a framework:Decision.
+	?s1 msobd:hasDecision ?_decision_iri.
 		?s2 a urw3:Sentence; owl:sameAs ?s1; urw3:hasUncertainty ?u.
 	?u msobd:hasUncertaintyValue ?value.
 } 

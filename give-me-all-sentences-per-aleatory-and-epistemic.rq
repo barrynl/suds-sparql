@@ -13,8 +13,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT  ?nature (COUNT(?nature)  as ?count)
 WHERE {
-	?_decision_uri a framework:Decision .
-	?s1 msobd:hasDecision ?_decision_uri; a framework:Sentence .
+	?_decision_iri a framework:Decision .
+	?s1 msobd:hasDecision ?_decision_iri; a framework:Sentence .
 	?s2 a urw3:Sentence; owl:sameAs ?s1; urw3:hasUncertainty ?u.
 	?u urw3:nature ?nature.
 } GROUP BY ?nature
