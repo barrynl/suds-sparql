@@ -13,13 +13,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT  ?sentence ?value ?cause 
 WHERE {
-    ?_s1 a framework:Sentence; framework:isDataIn ?data; msobd:hasSentenceStatement ?sentence.
-	?bigdatacomponent framework:hasOutputSentence ?_s1 .
+    ?_sentence1_uri a framework:Sentence; framework:isDataIn ?data; msobd:hasSentenceStatement ?sentence.
+	?bigdatacomponent framework:hasOutputSentence ?_sentence1_uri .
 	OPTIONAL {
    ?data msobd:isAffectedBy ?cause}.
 	OPTIONAL {
    ?bigdatacomponent msobd:isAffectedBy ?cause}.
 
-	?s2 a urw3:Sentence; owl:sameAs ?_s1; urw3:hasUncertainty ?u.
+	?s2 a urw3:Sentence; owl:sameAs ?_sentence1_uri; urw3:hasUncertainty ?u.
 	?u msobd:hasUncertaintyValue ?value .
 }

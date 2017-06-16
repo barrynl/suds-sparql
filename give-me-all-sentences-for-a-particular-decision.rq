@@ -13,6 +13,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?sentenceUri ?sentenceText
 WHERE {
-    ?sentenceUri msobd:hasDecision <http://uncertainty/msobd#Decision_1>; 
+    ?sentenceUri msobd:hasDecision ?_decision_uri; 
     	msobd:hasSentenceStatement ?sentenceText .
 }

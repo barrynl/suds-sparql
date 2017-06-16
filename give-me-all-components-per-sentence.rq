@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT  ?sentence ?bigdatacomponent
 WHERE {
-    ?_s1 a framework:Sentence; framework:isDataIn ?data; msobd:hasSentenceStatement ?sentence.
-	?bigdatacomponent framework:hasOutputSentence ?_s1.	
+    ?_s1_uri a framework:Sentence; framework:isDataIn ?data; msobd:hasSentenceStatement ?sentence.
+	?bigdatacomponent framework:hasOutputSentence ?_s1_uri.	
 
 }
