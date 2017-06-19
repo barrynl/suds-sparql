@@ -1,0 +1,25 @@
+#+ endpoint: http://fuseki:3030/suds/query
+#+ method: GET
+#+ summary: Get dummy data
+
+PREFIX causes: <http://uncertainty/causes#>
+PREFIX framework: <http://uncertainty/framework#>
+PREFIX msobd: <http://uncertainty/msobd#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX urw3: <http://uncertainty/urw3#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT  ?sentence ?value ?cause ?bigdatacomponent  ?type ?nature 
+WHERE {
+    ?s1 a framework:Sentence; framework:isDataIn ?data; msobd:hasSentenceStatement ?sentence.
+	?bigdatacomponent framework:hasOutputSentence ?s1.	
+	OPTIONAL {
+   ?data msobd:isAffectedBy ?cause}.
+	OPTIONAL {
+   ?bigdatacomponent msobd:isAffectedBy ?cause}.
+
+	?s2 a urw3:Sentence; owl:sameAs ?s1; urw3:hasUncertainty ?u.
+	?u msobd:hasUncertaintyValue ?value; urw3:nature ?nature; urw3:derivationType ?type.
+}
