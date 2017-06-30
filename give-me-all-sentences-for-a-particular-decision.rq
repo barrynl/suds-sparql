@@ -11,7 +11,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?_decision_iri ?sentenceUri ?sentenceText ?bigdatacomponent ?cause ?value
+SELECT ?sentenceUri ?sentenceText ?bigdatacomponent ?cause ?value
 WHERE {
     ?sentenceUri msobd:hasDecision ?_decision_iri;
     framework:isDataIn ?data;
