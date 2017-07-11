@@ -11,7 +11,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT  ?dId ?decisionText
+SELECT  ?dId ?dlabel ?decisionText
 WHERE {
-   ?dId a framework:Decision; msobd:hasDecisionStatement ?decisionText.
+   ?dId a framework:Decision; rdfs:label ?dlabel; msobd:hasDecisionStatement ?decisionText
 }

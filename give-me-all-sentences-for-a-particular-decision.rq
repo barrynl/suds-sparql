@@ -18,7 +18,8 @@ WHERE {
     msobd:hasSentenceStatement ?sentenceText .	
     ?s2 a urw3:Sentence; owl:sameAs ?sentenceUri; urw3:hasUncertainty ?u.
 	?u msobd:hasUncertaintyValue ?value .
-    ?bigdatacomponent framework:hasOutputSentence ?sentenceUri .
+    ?bigdatacomponentInstance framework:hasOutputSentence ?sentenceUri .
+    ?bigdatacomponentInstance a ?bigdatacomponent .
     OPTIONAL {?data msobd:isAffectedBy ?cause}.
 	OPTIONAL {?bigdatacomponent msobd:isAffectedBy ?cause}.
 }
