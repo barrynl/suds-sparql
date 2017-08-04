@@ -1,0 +1,10 @@
+#+ endpoint: http://fuseki:3030/suds/update
+#+ method: POST
+#+ summary: register an uncertainty into SUDS
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+?_sentence_iri rdf:type <http://uncertainty/framework#Sentence> .
+}
