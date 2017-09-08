@@ -1,6 +1,6 @@
 #+ endpoint: http://fuseki:3030/suds/query
 #+ method: GET
-#+ summary: Give me all decisions.
+#+ summary: Give me all decisions for a particular session URI.
 
 PREFIX causes: <http://uncertainty/causes#>
 PREFIX framework: <http://uncertainty/framework#>
@@ -13,5 +13,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT  ?dId ?dlabel ?decisionText
 WHERE {
-   ?dId a framework:Decision; rdfs:label ?dlabel; msobd:hasDecisionStatement ?decisionText
+   ?dId a framework:Decision; rdfs:label ?dlabel; msobd:hasDecisionStatement ?decisionText .
+   ?dId msobd:hasSession ?_session_iri
 }

@@ -14,9 +14,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?sentenceUri ?sentenceText ?bigdatacomponent ?cause ?value
 WHERE {
     ?sentenceUri msobd:hasDecision ?_decision_iri;
-    framework:isDataIn ?data;
-    msobd:hasSentenceStatement ?sentenceText .	
-    ?s2 a urw3:Sentence; owl:sameAs ?sentenceUri; urw3:hasUncertainty ?u.
+    framework:isDataIn ?data; owl:sameAs ?s2 ;
+    msobd:hasSentenceStatement ?sentenceText .
+    ?s2 a urw3:Sentence;  urw3:hasUncertainty ?u.
 	?u msobd:hasUncertaintyValue ?value .
     ?bigdatacomponentInstance framework:hasOutputSentence ?sentenceUri .
     ?bigdatacomponentInstance a ?bigdatacomponent .
