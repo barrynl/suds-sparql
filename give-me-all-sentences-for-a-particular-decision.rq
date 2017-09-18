@@ -11,15 +11,16 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?sentenceUri ?sentenceText ?bigdatacomponent ?causeType
+SELECT ?sentenceUri ?sentenceText ?bigdatacomponent ?cause ?derivationType ?nature
 WHERE {
     ?sentenceUri msobd:hasDecision ?_decision_iri;
     framework:isDataIn ?data; owl:sameAs ?s2 ;
     msobd:hasSentenceStatement ?sentenceText .
     ?s2 a urw3:Sentence .
+    #?s2 urw3:derivationType ?derivationType .
+    #?s2 urw3:nature ?nature .
     ?bigdatacomponentInstance framework:hasOutputSentence ?sentenceUri .
     ?bigdatacomponentInstance a ?bigdatacomponent .
     OPTIONAL {?data msobd:isAffectedBy ?cause}.
-    OPTIONAL {?bigdatacomponent msobd:isAffectedBy ?cause . 
-  	?cause a ?causeType }.
+    OPTIONAL {?bigdatacomponent msobd:isAffectedBy ?cause . }.
 }
