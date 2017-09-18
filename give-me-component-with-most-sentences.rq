@@ -1,6 +1,6 @@
 #+ endpoint: http://fuseki:3030/suds/query
 #+ method: GET
-#+ summary: Give me the component with most sentences (Not yet implemented)
+#+ summary: Give me the component with most sentences
 
 PREFIX causes: <http://uncertainty/causes#>
 PREFIX framework: <http://uncertainty/framework#>
@@ -11,7 +11,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT  ?s ?p ?o
+SELECT ?bigdatacomponent (COUNT(?sentenceUri) AS ?sentenceCount)
 WHERE {
-    ?s ?p ?o .
-}
+    ?dId a framework:Decision .
+    ?dId msobd:hasSession ?_session_iri .
+    ?sentenceUri msobd:hasDecision ?dId .
+    ?bigdatacomponentInstance framework:hasOutputSentence ?sentenceUri .
+    ?bigdatacomponentInstance a ?bigdatacomponent .
+} GROUP BY ?bigdatacomponent ORDER BY ?sentenceCount

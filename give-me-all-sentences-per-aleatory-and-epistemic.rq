@@ -11,11 +11,12 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT  ?nature (COUNT(?nature)  as ?count)
+SELECT ?natureType (COUNT(?s2) as ?sentenceCount)
 WHERE {
 	?_decision_iri a framework:Decision .
-	?s1 msobd:hasDecision ?_decision_iri; a framework:Sentence .
-	?s2 a urw3:Sentence; owl:sameAs ?s1; urw3:hasUncertainty ?u.
-	?u urw3:nature ?nature.
-} GROUP BY ?nature
+	?s1 msobd:hasDecision ?_decision_iri ; a framework:Sentence; owl:sameAs ?s2 .
+	?s2 a urw3:Sentence; a urw3:Sentence .
+    ?s2 urw3:derivationType ?nature .
+    ?nature a ?natureType .
+} GROUP BY ?natureType
 
