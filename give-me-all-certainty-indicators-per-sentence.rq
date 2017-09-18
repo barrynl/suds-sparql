@@ -11,10 +11,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?certaintyIndicatorURI ?certaintyIndicatorMeaning ?certaintyIndicatorValue ?certaintyIndicatorWeight
+SELECT ?certaintyIndicatorURI ?certaintyIndicatorLabel ?certaintyIndicatorMeaning ?certaintyIndicatorValue ?certaintyIndicatorWeight
 WHERE {
     ?_sentence_uri msobd:hasCertaintyIndicator ?certaintyIndicatorURI .
     ?certaintyIndicatorURI framework:hasIndicatorMeaning ?certaintyIndicatorMeaning .
 	?certaintyIndicatorURI framework:hasIndicatorValue ?certaintyIndicatorValue .
 	?certaintyIndicatorURI framework:hasIndicatorWeight ?certaintyIndicatorWeight .
+	?certaintyIndicatorURI rdfs:label ?certaintyIndicatorLabel
 }
