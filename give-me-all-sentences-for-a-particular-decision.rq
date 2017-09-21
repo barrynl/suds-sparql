@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?sentenceUri ?s2 ?sentenceText ?bigdatacomponent ?causeType ?derivationTypeType ?natureType
 WHERE {
-    ?sentenceUri msobd:hasDecision <http://uncertainty/msobd#decision/Decision_1>;
+    ?sentenceUri msobd:hasDecision ?_decision_iri;
     framework:isDataIn ?data; owl:sameAs ?s2 ;
     msobd:hasSentenceStatement ?sentenceText .
     ?s2 a urw3:Sentence .
