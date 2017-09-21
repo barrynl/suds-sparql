@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?certaintyIndicatorURI ?certaintyIndicatorLabel ?certaintyIndicatorMeaning ?certaintyIndicatorValue ?certaintyIndicatorWeight
 WHERE {
-    ?_sentence_uri msobd:hasCertaintyIndicator ?certaintyIndicatorURI .
+    ?_sentence_iri msobd:hasCertaintyIndicator ?certaintyIndicatorURI .
     ?certaintyIndicatorURI framework:hasIndicatorMeaning ?certaintyIndicatorMeaning .
 	?certaintyIndicatorURI framework:hasIndicatorValue ?certaintyIndicatorValue .
 	?certaintyIndicatorURI framework:hasIndicatorWeight ?certaintyIndicatorWeight .
