@@ -11,7 +11,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX urw3: <http://uncertainty/urw3#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?sentenceUri ?s2 ?sentenceText ?bigdatacomponent ?causeType ?derivationTypeType ?natureType
+SELECT ?sentenceUri ?s2 ?sentenceText ?bigdatacomponent ?causeLabel ?derivationTypeType ?natureType
 WHERE {
     ?sentenceUri msobd:hasDecision ?_decision_iri;
     framework:isDataIn ?data; owl:sameAs ?s2 ;
@@ -26,6 +26,7 @@ WHERE {
     OPTIONAL {
     	?data msobd:isAffectedBy ?cause .
     	?cause a ?causeType .
+    	?causeType rdfs:label ?causeLabel
     }.
     OPTIONAL {
     	?bigdatacomponent msobd:isAffectedBy ?cause .
