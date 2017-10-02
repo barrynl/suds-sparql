@@ -14,7 +14,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?certaintyIndicatorLabel (AVG(?certaintyIndicatorValue) as ?avgIndicatorValue) (AVG(?certaintyIndicatorWeight) as ?avgIndicatorWeight)
 WHERE {
     ?dId a framework:Decision .
-    ?dId msobd:hasSession ?_session_uri .
+    ?dId msobd:hasSession ?_session_iri .
     ?sentenceUri msobd:hasDecision ?dId .
     ?sentenceUri msobd:hasCertaintyIndicator ?certaintyIndicatorURI .
     ?certaintyIndicatorURI framework:hasIndicatorMeaning ?certaintyIndicatorMeaning .
